@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoLo Design</title>
+    <meta name="author" content="zhu_w">
+    <meta name="keywords" content="LoLo,Design">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../resource/scrollbar-plugin/jquery.mCustomScrollbar.css">
+    <script src="../resource/jquery-1.9.1.min.js"></script>
+    <!--<script src="../resource/jquery-2.1.0.min.js"></script>-->
+    <script src="../resource/scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script>
+        $(function(){
+            $('.main').height($(window).height()).mCustomScrollbar({
+                theme: "dark-thin",
+                callbacks: {
+                    onCreate:function(){
+                        console.log("Plugin markup generated");
+                    },
+                    onInit:function(){
+                        console.log("Scrollbars initialized");
+                    },
+                    whileScrolling: function(){
+                        //console.log('whileScrolling');
+                        var top = parseInt($('.mCSB_dragger').css('top'));
+                        if(top > 100){
+                            $('#to_top').fadeIn();
+                        }else{
+                            $('#to_top').fadeOut();
+                        }
+                        console.log(top);
+                    },
+                    //到底
+                    onTotalScroll: function(){
+                        console.log('onTotalScroll');
+                    },
+                    //到顶
+                    onTotalScrollBack: function(){
+                        console.log('onTotalScrollBack');
+                    }
+                }
+
+            });
+            $('#to_top').off('click').on('click',function(){
+                $('.main').mCustomScrollbar('scrollTo','top');
+            });
+
+            $(window).resize(function(){
+                $('.main').height($(window).height())
+            });
+            $('.main').fadeIn(1000);
+        })
+    </script>
+    <style>
+        .mCSB_inside > .mCSB_container {
+            margin-right: 0;
+        }
+        .main{
+            width: 100%;
+            display: none;
+        }
+        .main img{
+            width:100%;
+
+        }
+        .top{
+            cursor: pointer;
+            position: fixed;
+            bottom:40px;
+            right:30px;
+            width:40px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            background: #333;
+            color:#ffffff;
+            font-size: 18px;
+            font-weight:bold;
+            opacity: 0.5;
+            filter:alpha(opacity=50);
+            -moz-opacity:0.5;
+            -khtml-opacity:0.5;
+            display: none;
+        }
+        .top:hover{
+            opacity: 0.8;
+            filter:alpha(opacity=80);
+            -moz-opacity:0.8;
+            -khtml-opacity:0.8;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <img src="../images/lolo-design.jpg" alt="">
+</div>
+<div class="top" id="to_top">
+    TOP
+</div>
+</body>
+</html>

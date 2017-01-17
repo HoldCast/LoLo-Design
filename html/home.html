@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoLo Design</title>
+    <meta name="author" content="zhu_w">
+    <meta name="keywords" content="LoLo,Design">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_mblsvwpzmatkpgb9.css">
+    <!--<link rel="stylesheet" href="../resource/scrollbar-plugin/jquery.mCustomScrollbar.css">-->
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>
+<div class="lolo-main">
+    <div class="lolo-item case">
+        <a name="case"></a>
+        <div class="title">
+            <img src="../images/case-d.jpg" alt="case-title">
+        </div>
+        <div class="content">
+            <img src="../images/case.jpg" alt="case-item" id="case_img" title="点击查看">
+        </div>
+    </div>
+    <a name="team"></a>
+    <div class="lolo-item">
+        <div class="content">
+            <img src="../images/team-member.jpg" alt="team-member">
+        </div>
+    </div>
+    <a name="brand"></a>
+    <div class="lolo-item">
+        <div class="content">
+            <img src="../images/brand-introduction.jpg" alt="brand-introduction">
+        </div>
+    </div>
+    <a name="contact"></a>
+    <div class="lolo-item">
+        <div class="content">
+            <img src="../images/contact.jpg" alt="brand-introduction">
+        </div>
+    </div>
+</div>
+
+<!--菜单按钮-->
+<div class="menu-btn">
+    <i class="iconfont icon-list" id="menu_open_btn"></i>
+</div>
+<!--菜单蒙层-->
+<div class="menu-cover" id="menu_cover">
+    <div class="menu-title">
+        <div class="logo">
+
+        </div>
+        <div class="close-btn">
+            <i class="iconfont icon-close" id="menu_close_btn"></i>
+        </div>
+    </div>
+    <div class="menu-content">
+        <div class="menu-item">
+            <a href="../index.html">
+            <div class="line"></div>
+            <div class="word" style="width:90px;">
+                <div class="title">HOME</div>
+                <div class="sub-title">网站首页</div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#case">
+                <div class="line"></div>
+                <div class="word" style="width:330px;">
+                    <div class="title">CASE DEMONSTRATION</div>
+                    <div class="sub-title">案例展示</div>
+                </div>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="#team">
+            <div class="line"></div>
+            <div class="word" style="width:300px;">
+                <div class="title">TEAM INTRODUCTION</div>
+                <div class="sub-title">团队介绍</div>
+            </div>
+                </a>
+        </div>
+        <div class="menu-item">
+            <a href="#brand">
+            <div class="line"></div>
+            <div class="word" style="width:240px;">
+                <div class="title">BRAND PROFILES</div>
+                <div class="sub-title">案例展示</div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#contact">
+            <div class="line"></div>
+            <div class="word" style="width:180px;">
+                <div class="title">CONTACT US</div>
+                <div class="sub-title">联系我们</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../resource/jquery-2.1.0.min.js"></script>
+<!--<script src="../resource/scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>-->
+<script>
+
+    //设置音量大小
+    document.getElementById("music").volume = 0.3;
+    //点击菜单按钮
+    $('#menu_open_btn').click(function () {
+        $(this).hide();
+        $('#menu_cover').show();
+        $('body').css({
+            overflow: 'hidden',
+            borderRight: '3px solid #fff'
+        });
+    });
+    //点击关闭
+    $('#menu_close_btn').click(function () {
+
+        $('#menu_open_btn').show();
+        $('#menu_cover').fadeOut('fast',function(){
+            $('body').css({
+                overflow: 'auto',
+                borderRight: 'none'
+            });
+        });
+
+    });
+    //选择菜单项
+    $('#menu_cover a').off('click').on('click',function(){
+        $('#menu_close_btn').click();
+    });
+    //点击项目
+    $('#case_img').click(function(){
+        window.open('vi.html');
+    });
+</script>
+</html>

@@ -1,0 +1,75 @@
+@charset "UTF-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+    font-family:"MicrosoftYaHei";
+}
+/*控制的页面的宽度*/
+body{
+    max-width: 1600px;
+    min-width: 1200px;
+    margin: auto;
+    font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+ol,ul {
+    list-style: none;
+}
+caption,th {
+    text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym {
+    border: 0;
+}
+/*-webkit-scrollbar*/
+::-webkit-scrollbar{
+    width:3px;
+    height:3px;
+    background-color: #ccc;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #656565; /*中间显示的颜色*/
+}
+
+/*::-webkit-scrollbar-button{}      !*滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*!*/
+/*::-webkit-scrollbar-track{}         !*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*!*/
+/*::-webkit-scrollbar-track-piece{width:2px;}        !*内层轨道，滚动条中间部分（除去）。*!*/
+/*::-webkit-scrollbar-thumb{width:2px;}              !* 滚动条里面可以拖动的那部分*!*/
+/*::-webkit-scrollbar-corner{}               !*边角*!*/
+/*::-webkit-resizer{}                       !*定义右下角拖动块的样式*!*/
+
+
+/*蒙层*/
+.menu-cover,.case-cover{
+    display: none;
+    background: #000;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    color: #bbb;
+    overflow: auto;
+}
+

@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+.lolo-main{
+    background-color: #fff;
+    margin:50px 30px 20px 30px;
+    clear:both;
+}
+.lolo-main .case .content img{
+    cursor:pointer;
+}
+.lolo-main .lolo-item{
+    margin-bottom:30px;
+}
+.lolo-main .lolo-item .title{
+    text-align: center;
+}
+.lolo-main .lolo-item .team-title{
+     text-align: left;
+ }
+/*浮动子元素撑开父元素*/
+.lolo-main .lolo-item .content{
+    /*overflow:hidden;*/
+}
+.lolo-main .lolo-item .content img{
+    width:100%;
+}
+.lolo-main .lolo-item .content .item{
+    border:1px solid aqua;
+    margin: 10px;
+    /*float:left;*/
+    width:calc(50% - 25px);
+    min-height:400px;
+    padding:0;
+}
+.lolo-main .lolo-item .content>div:nth-child(2n+1){
+    text-align: right;
+}
+
+.lolo-main .lolo-item .content>div:nth-child(2n){
+    text-align: left;
+}
+
+
+
+/*菜单按钮*/
+.menu-btn{
+    position: fixed;
+    top:30px;
+    right:30px;
+}
+
+.menu-btn i{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+/*菜单标题部分 .logo和关闭按钮*/
+.menu-cover .menu-title{
+    height: 80px;
+    line-height: 80px;
+    clear: both;
+    margin: 0 25px;
+}
+.menu-cover .menu-title .logo{
+    float: left;
+}
+.menu-cover .menu-title .close-btn{
+    float: right;
+}
+
+.menu-cover .menu-title .close-btn i{
+    cursor: pointer;
+    color: #bbb;
+    font-size:36px;
+}
+.menu-cover .menu-title .close-btn i:hover{
+    color: #fff;
+}
+
+/*菜单内容部分*/
+.menu-cover .menu-content{
+    margin-top:80px;
+}
+.menu-cover .menu-content .menu-item{
+    position: relative;
+    cursor: pointer;
+    margin:45px 0;
+}
+.menu-cover .menu-content .menu-item a:hover{color:#fff;}
+.menu-cover .menu-content .menu-item a{
+    text-decoration: none;
+    color: #bbbbbb;
+}
+.menu-cover .menu-content .menu-item .line{
+    /*margin-top:40px;*/
+    height:2px;
+    background-color: #bbb;
+}
+.menu-cover .menu-content .menu-item .word{
+    width: 200px;
+    position: relative;
+    top:-16px;
+    background: #000;
+    margin:auto;
+    text-align: center;
+    padding-left: 5px;
+}
+.menu-cover .menu-content .menu-item .word .title{
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+.menu-cover .menu-content .menu-item .word .sub-title{
+    font-size: 12px;
+    letter-spacing: 1px;
+    color:#aaa
+}
