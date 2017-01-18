@@ -7,12 +7,12 @@
     <meta name="keywords" content="LoLo,Design">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_mblsvwpzmatkpgb9.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_stf9jqybf51rwwmi.css">
     <!--<link rel="stylesheet" href="../resource/scrollbar-plugin/jquery.mCustomScrollbar.css">-->
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>
+<!--<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>-->
 <div class="lolo-main">
     <div class="lolo-item case">
         <a name="case"></a>
@@ -89,7 +89,7 @@
             <div class="line"></div>
             <div class="word" style="width:240px;">
                 <div class="title">BRAND PROFILES</div>
-                <div class="sub-title">案例展示</div>
+                <div class="sub-title">品牌简介</div>
             </div>
         </div>
         <div class="menu-item">
@@ -106,9 +106,10 @@
 <script src="../resource/jquery-2.1.0.min.js"></script>
 <!--<script src="../resource/scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>-->
 <script>
+    $('body').fadeIn();
 
     //设置音量大小
-    document.getElementById("music").volume = 0.3;
+//    document.getElementById("music").volume = 0.3;
     //点击菜单按钮
     $('#menu_open_btn').click(function () {
         $(this).hide();
@@ -136,7 +137,19 @@
     });
     //点击项目
     $('#case_img').click(function(){
-        window.open('vi.html');
+        location = 'sub_case.html';
+    });
+
+    //滚轮事件
+    var initTop = 0;
+    $(window).scroll(function(){
+        var scrollTop = $(document).scrollTop();
+        if(scrollTop > initTop){
+            console.log("下",scrollTop);
+        } else {
+            console.log("上",scrollTop);
+        }
+        initTop = scrollTop;
     });
 </script>
 </html>

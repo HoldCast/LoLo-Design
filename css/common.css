@@ -5,9 +5,9 @@ form,fieldset,input,textarea,p,blockquote,th,td {
     margin: 0;
     font-family:"MicrosoftYaHei";
 }
-/*控制的页面的宽度*/
+/*总体控制的页面的宽度*/
 body{
-    max-width: 1600px;
+    max-width: 1920px;
     min-width: 1200px;
     margin: auto;
     font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
