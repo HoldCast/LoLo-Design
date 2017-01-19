@@ -10,6 +10,41 @@ body{
     margin:50px 30px 20px 30px;
     clear:both;
 }
+/*case*/
+
+.lolo-main .case{
+    margin-bottom: 40px;
+}
+.lolo-main .case .case-title{
+    text-align: center;
+}
+.lolo-main .case .case-content{
+    width:1300px;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+}
+.lolo-main .case .case-content .item{
+    text-align: center;
+    /*background: aqua;*/
+    margin:20px 0;
+    height:400px;
+    width:600px;
+    float: left;
+}
+.lolo-main .case .case-content .item img{
+    max-width:calc(100% - 20px);
+    margin:10px;
+    height:calc(100% - 20px);
+    cursor: pointer;
+}
+.lolo-main .case .case-content .item img:hover{
+    /*border: 2px solid #ccc;*/
+
+    box-shadow: 0 0 10px 3px #bbbbbb;
+}
+/**/
+/*
 .lolo-main .case .content img{
     cursor:pointer;
 }
@@ -22,44 +57,52 @@ body{
 .lolo-main .lolo-item .team-title{
      text-align: left;
  }
-/*浮动子元素撑开父元素*/
-.lolo-main .lolo-item .content{
-    /*overflow:hidden;*/
+!*浮动子元素撑开父元素*!
+.lolo-main .lolo-item.case .content{
+    text-align: center;
+    width:1300px;
+    margin:auto;
+    !*overflow:hidden;*!
 }
 .lolo-main .lolo-item .content img{
-    width:100%;
+    width:auto;
+    height: 100%;
 }
 .lolo-main .lolo-item .content .item{
-    border:1px solid aqua;
+    background: aqua;
     margin: 10px;
-    /*float:left;*/
-    width:calc(50% - 25px);
-    min-height:400px;
+    float:left;
+    width:600px;
+    height:400px;
     padding:0;
-}
-.lolo-main .lolo-item .content>div:nth-child(2n+1){
+}*/
+
+/*.lolo-main .lolo-item .content>div:nth-child(2n+1){
     text-align: right;
 }
 
 .lolo-main .lolo-item .content>div:nth-child(2n){
     text-align: left;
+}*/
+
+/**team等整个图片模块的样式**/
+.lolo-main .team{
+    margin:auto;
 }
-
-
-
+.lolo-main .team img{
+    width:100%;
+}
+/******************************菜单部分************************************/
 /*菜单按钮*/
 .menu-btn{
     position: fixed;
     top:25px;
     right:25px;
 }
-
 .menu-btn i{
     font-size: 20px;
     cursor: pointer;
 }
-
-
 
 /*菜单标题部分 .logo和关闭按钮*/
 .menu-cover .menu-title{
