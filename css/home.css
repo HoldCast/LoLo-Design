@@ -26,7 +26,7 @@ body{
 .lolo-main .case .case-content .item{
     text-align: center;
     /*background: aqua;*/
-    margin:20px 0;
+    margin:25px;
     height:400px;
     width:600px;
     float: left;
@@ -42,47 +42,6 @@ body{
 
     box-shadow: 0 0 10px 3px #bbbbbb;
 }
-/**/
-/*
-.lolo-main .case .content img{
-    cursor:pointer;
-}
-.lolo-main .lolo-item{
-    margin-bottom:30px;
-}
-.lolo-main .lolo-item .title{
-    text-align: center;
-}
-.lolo-main .lolo-item .team-title{
-     text-align: left;
- }
-!*浮动子元素撑开父元素*!
-.lolo-main .lolo-item.case .content{
-    text-align: center;
-    width:1300px;
-    margin:auto;
-    !*overflow:hidden;*!
-}
-.lolo-main .lolo-item .content img{
-    width:auto;
-    height: 100%;
-}
-.lolo-main .lolo-item .content .item{
-    background: aqua;
-    margin: 10px;
-    float:left;
-    width:600px;
-    height:400px;
-    padding:0;
-}*/
-
-/*.lolo-main .lolo-item .content>div:nth-child(2n+1){
-    text-align: right;
-}
-
-.lolo-main .lolo-item .content>div:nth-child(2n){
-    text-align: left;
-}*/
 
 /**team等整个图片模块的样式**/
 .lolo-main .team{

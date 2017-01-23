@@ -9,7 +9,7 @@
     <!--图标-->
     <link rel="stylesheet" href="//at.alicdn.com/t/font_stf9jqybf51rwwmi.css">
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/sub-case.css">
+    <link rel="stylesheet" href="../css/sub_case.css">
 </head>
 <body>
 <!--<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>-->
@@ -24,82 +24,11 @@
         </div>
         <div class="scroll-img">
             <div class="scroll-img-content">
-                <div class="scroll-img-long" id="scroll_img">
-                    <div class="img-item" style="background: url('../images/vi/bite-title.jpg');">
-                        <div class="cover" img-name="bite.jpg">
-                            <div class="title">BITE DESIGN</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">BiTE GOGO</div>
-                        </div>
-                    </div>
-                    <div class="img-item" style="background: url('../images/vi/juyi-title.jpg');">
-                        <div class="cover" img-name="juyi.jpg">
-                            <div class="title">居一生态品牌 VI</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item" style="background: url('../images/vi/marcus-title.jpg');">
-                        <div class="cover" img-name="marcus.jpg">
-                            <div class="title">MARCUS LOGO</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item" style="background: url('../images/vi/logo-title.jpg');">
-                        <div class="cover" img-name="logo.jpg">
-                            <div class="title">LOGO DESIGN</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item" style="background: url('../images/vi/xiaoyuan-title.jpg');">
-                        <div class="cover" img-name="xiaoyuan.jpg">
-                            <div class="title">青春校园设计系列</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item">
-                        <div class="cover">
-                            <div class="title">TEST</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item">
-                        <div class="cover">
-                            <div class="title">TEST</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item">
-                        <div class="cover">
-                            <div class="title">TEST</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item">
-                        <div class="cover">
-                            <div class="title">TEST</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                    <div class="img-item">
-                        <div class="cover">
-                            <div class="title">TEST</div>
-                            <div class="more-btn">MORE</div>
-                            <div class="slogan">Habitat an ecological brand VI</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="scroll-img-long" id="scroll_img"></div>
             </div>
         </div>
         <div class="slogan-img">
-            <img src="../images/vi/vi-slogan.jpg" alt="slogan">
+            <img src="../images/vi/vi - slogan.jpg" alt="slogan">
         </div>
     </div>
 </div>
@@ -115,96 +44,7 @@
 </body>
 <script src="../resource/jquery-2.1.0.min.js"></script>
 <script src="../js/common.js"></script>
-<script>
-    var scrollTimer = null;
-    var isAnimate = false;
-    $(function () {
-//        document.getElementById("music").volume = 0.3;//设置音量大小
-        $('body').fadeIn(); //页面加载效果
-        autoHeight('main');
-        moveImg();
-        getMore();
-        returnBack();
-        startAutoScroll();
-    });
+<script src="../js/config.js"></script>
+<script src="../js/sub_case.js"></script>
 
-    function moveImg() {
-        var $scrollImg = $('#scroll_img');
-        $('#scroll_btn').on('click', 'i', function () {
-            clearInterval(scrollTimer);
-            if(isAnimate) return false;
-            isAnimate = true;
-            var $this = $(this);
-            var $scrollImgLeft = parseInt($scrollImg.css('left'));
-            var $scrollImgRight = parseInt($scrollImg.css('right'));
-            //console.log($scrollImgLeft, $scrollImgRight);
-            if (!$this.hasClass('left')) {
-                if ($scrollImgRight < 0) {
-                    $scrollImg.stop().animate({left: $scrollImgLeft - 300 + 'px'},function(){
-                        isAnimate = false;
-                    });
-                }else{
-                    isAnimate = false;
-                }
-            } else {
-                if ($scrollImgLeft < 0) {
-                    $scrollImg.stop().animate({left: $scrollImgLeft + 300 + 'px'},function(){
-                        isAnimate = false;
-                    });
-                }else{
-                    isAnimate = false;
-                }
-            }
-            setTimeout(function(){
-                startAutoScroll();
-            },5000);
-        });
-    }
-
-    //启动自动滚动
-    function startAutoScroll(){
-        clearInterval(scrollTimer);
-        scrollTimer = setInterval(function(){
-            var $scrollImg = $('#scroll_img');
-            var $scrollImgLeft = parseInt($scrollImg.css('left'));
-            var $scrollImgRight = parseInt($scrollImg.css('right'));
-            if ($scrollImgRight < 0) {
-                $scrollImg.stop().animate({left: $scrollImgLeft - 300 + 'px'});
-            }else{
-                $scrollImg.stop().animate({left: '0px'},1000);
-            }
-        },2000);
-    }
-
-    function getMore() {
-        $('#scroll_img .img-item').hover(function(){
-            clearInterval(scrollTimer);
-            var $cover = $(this).find('.cover');
-            $cover.off('click').on('click',function(){
-                var imgName = $(this).attr('img-name');
-                var imgUrl = '../images/vi/' + imgName;
-                console.log(imgUrl);
-                $('#case_img').prop('src',imgUrl);
-                $('#case_cover').fadeIn('fast',function(){
-                    $('#case_img').slideDown();
-                });
-                $('#case_close_btn').click(function(){
-                    $('#case_cover').hide().find('img').hide();
-                });
-            });
-            $cover.stop().fadeIn();
-        },function(){
-            var $cover = $(this).find('.cover');
-            $cover.stop().fadeOut('show');
-            startAutoScroll();
-        });
-    }
-
-    function returnBack(){
-        $('#return').click(function(){
-            parent.closeSubCase();
-        });
-    }
-
-</script>
 </html>

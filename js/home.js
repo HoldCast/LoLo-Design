@@ -1,9 +1,43 @@
+
+var openedCaseId = null;
 $(function () {
-    var a = document.getElementById("music").volume = 0.3;//设置音量大小
+    document.getElementById("music").volume = 0.3;//设置音量大小
     showCoverImg(true); //展示封面
     menu();             //菜单处理
+    caseShow();         //案列展示
 
 });
+
+function caseShow(){
+    var $caseImg = $('#case_img');
+    var caseImgArr = caseConfig;   //以后可能从后台获取信息
+    for(var i=0;i<caseImgArr.length;i++){
+        var caseImg = caseImgArr[i];
+        var imgSrc = '../images/' + caseImg.img;
+        var subId = caseImg.id;
+        var caseHtml =  '<div class="item">'+
+                        '<img src="'+imgSrc+'" alt="案例图片" sub_id="'+subId+'">'+
+                    '</div>';
+        $caseImg.append(caseHtml);
+    }
+
+
+    //点击项目
+    $caseImg.on('click','img',function () {
+        var $this = $(this);
+        var subId = $this.attr('sub_id');
+        console.log(subId);
+        if(subId){
+            openSubCase(subId);
+        }else{
+            alert('子项案例数据暂未设置,请点击第二项');
+        }
+
+    });
+
+}
+
+
 
 
 //展示封面
@@ -68,16 +102,15 @@ function menu() {
     $('#menu_cover a').off('click').on('click', function () {
         $('#menu_close_btn').click();
     });
-    //点击项目
-    $('#case_img img').click(function () {
-        openSubCase();
-    });
-
 }
 
 //打开子项目弹窗
-function openSubCase(){
-    $('#sub_iframe iframe').prop('src','sub_case.html');
+function openSubCase(subId){
+    if(subId != openedCaseId){
+        var random = Math.random();
+        $('#sub_iframe iframe').prop('src','sub_case.html?random='+random+'&subId='+subId);
+        openedCaseId = subId;
+    }
     $('#sub_iframe').fadeIn();
     $('body').css('overflow','hidden');
 }
