@@ -3,7 +3,6 @@
 body{
     max-width: 1600px;
     min-width: 1200px;
-    display: none;
 }
 .lolo-main{
     background-color: #fff;
@@ -87,7 +86,8 @@ body{
 
 /**team等整个图片模块的样式**/
 .lolo-main .team{
-    margin:auto;
+    margin: auto;
+    /*padding: 50px 0;*/
 }
 .lolo-main .team img{
     width:100%;
@@ -103,6 +103,23 @@ body{
     font-size: 20px;
     cursor: pointer;
 }
+
+/*蒙层*/
+.menu-cover{
+    display: none;
+    background: #000;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    color: #bbb;
+    overflow: auto;
+}
+
 
 /*菜单标题部分 .logo和关闭按钮*/
 .menu-cover .menu-title{
@@ -163,4 +180,19 @@ body{
     font-size: 12px;
     letter-spacing: 1px;
     color:#aaa
+}
+
+/*子项目的框架*/
+.sub-iframe{
+    /*filter: alpha(opacity=90);*/
+    /*opacity: 0.9;*/
+    background: #fff;
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    overflow: hidden;
 }

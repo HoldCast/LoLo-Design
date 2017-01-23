@@ -11,9 +11,10 @@
     <!--<link rel="stylesheet" href="../resource/scrollbar-plugin/jquery.mCustomScrollbar.css">-->
     <link rel="stylesheet" href="../css/home.css">
 </head>
+
 <body>
-<!--<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>-->
-<div class="lolo-main">
+<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>
+<div class="lolo-main" id="lolo_main" style="display:none">
     <!--case-->
     <a name="case"></a>
     <div class="case">
@@ -43,14 +44,16 @@
     </div>
     <!--team-->
     <a name="team"></a>
-    <div class="team">
+    <div class="team" id="team">
         <img src="../images/team-member.jpg" alt="team-member">
     </div>
-    <a name="brand"></a>
+    <!--brand-->
+    <a name="brand" id="brand" style="height:800px;"></a>
     <div class="brand team">
         <img src="../images/brand-introduction.jpg" alt="brand-introduction">
     </div>
-    <a name="contact"></a>
+    <!--contact-->
+    <a name="contact" id="contact"></a>
     <div class="contact team">
         <img src="../images/contact.jpg" alt="brand-introduction">
     </div>
@@ -72,12 +75,13 @@
     </div>
     <div class="menu-content">
         <div class="menu-item">
-            <a href="../index.html">
+            <a href="javascript:showCoverImg(true);">
                 <div class="line"></div>
                 <div class="word" style="width:90px;">
                     <div class="title">HOME</div>
                     <div class="sub-title">网站首页</div>
                 </div>
+            </a>
         </div>
         <div class="menu-item">
             <a href="#case">
@@ -104,6 +108,7 @@
                     <div class="title">BRAND PROFILES</div>
                     <div class="sub-title">品牌简介</div>
                 </div>
+            </a>
         </div>
         <div class="menu-item">
             <a href="#contact">
@@ -112,57 +117,16 @@
                     <div class="title">CONTACT US</div>
                     <div class="sub-title">联系我们</div>
                 </div>
+            </a>
         </div>
     </div>
+</div>
+<!--子项目iframe-->
+<div class="sub-iframe" id="sub_iframe">
+    <iframe frameborder="0" width="100%" height="100%" ></iframe>
 </div>
 </body>
 <script src="../resource/jquery-2.1.0.min.js"></script>
 <!--<script src="../resource/scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>-->
-<script>
-    $('body').fadeIn();
-
-    //设置音量大小
-    //    document.getElementById("music").volume = 0.3;
-    //点击菜单按钮
-    $('#menu_open_btn').click(function () {
-        $(this).hide();
-        $('#menu_cover').show();
-        $('body').css({
-            overflow: 'hidden',
-            borderRight: '3px solid #fff'
-        });
-    });
-    //点击关闭
-    $('#menu_close_btn').click(function () {
-
-        $('#menu_open_btn').show();
-        $('#menu_cover').fadeOut('fast', function () {
-            $('body').css({
-                overflow: 'auto',
-                borderRight: 'none'
-            });
-        });
-
-    });
-    //选择菜单项
-    $('#menu_cover a').off('click').on('click', function () {
-        $('#menu_close_btn').click();
-    });
-    //点击项目
-    $('#case_img img').click(function () {
-        location = 'sub_case.html';
-    });
-
-    //滚轮事件
-    var initTop = 0;
-    $(window).scroll(function () {
-        var scrollTop = $(document).scrollTop();
-        if (scrollTop > initTop) {
-            console.log("下", scrollTop);
-        } else {
-            console.log("上", scrollTop);
-        }
-        initTop = scrollTop;
-    });
-</script>
+<script src="../js/home.js"></script>
 </html>

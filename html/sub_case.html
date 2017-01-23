@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/sub-case.css">
 </head>
 <body>
+<!--<audio loop="loop" id="music" autoplay="autoplay" src="../music/Rist-rain.mp3">你的浏览器不支持音乐播放!</audio>-->
 <div class="main" id="main">
     <div class="return" id="return">
         <i class="iconfont icon-fanhui1" title="返回"></i>
@@ -118,6 +119,7 @@
     var scrollTimer = null;
     var isAnimate = false;
     $(function () {
+//        document.getElementById("music").volume = 0.3;//设置音量大小
         $('body').fadeIn(); //页面加载效果
         autoHeight('main');
         moveImg();
@@ -200,7 +202,7 @@
 
     function returnBack(){
         $('#return').click(function(){
-            history.go(-1);
+            parent.closeSubCase();
         });
     }
 
