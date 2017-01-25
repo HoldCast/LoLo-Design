@@ -111,12 +111,12 @@ function openSubCase(subId){
         $('#sub_iframe iframe').prop('src','sub_case.html?random='+random+'&subId='+subId);
         openedCaseId = subId;
     }
-    $('#sub_iframe').fadeIn();
+    $('#sub_iframe').show('fast');
     $('body').css('overflow','hidden');
 }
 //关闭子项目弹窗
 function closeSubCase(){
-    $('#sub_iframe').fadeOut('fast');
+    $('#sub_iframe').hide('fast');
     $('body').css('overflow','auto');
 }
 

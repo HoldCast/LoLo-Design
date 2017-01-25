@@ -73,8 +73,10 @@ i:hover{
     float: left;
     width:300px;
     height:400px;
-    background: url('../images/vi/vi%20-%201.jpg');
     cursor: pointer;
+    background-color: #ccc;
+    background-repeat:no-repeat;
+    background-size:300px 400px;
 }
 
 .sub-case-main .scroll-img .scroll-img-content .scroll-img-long .img-item .cover{
@@ -153,9 +155,11 @@ i:hover{
 
 .case-cover .content{
     margin:15px auto;
-    width:1100px;
+    width:60%;
+    min-width:1200px;
+    text-align: center;
 }
 .case-cover .content img{
-    width:100%;
+    max-width:100%;
     display:none;
 }

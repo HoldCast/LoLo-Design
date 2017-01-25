@@ -22,7 +22,7 @@ function getSubCaseInfo(){
         var smallImg = '../images/' + subCaseInfo.smallImg;
         var largeImg = '../images/' + subCaseInfo.largeImg;
         var url = smallImg;
-        var html =  '<div class="img-item" style="background: url('+smallImg+');">'+
+        var html =  '<div class="img-item" small_img="'+smallImg+'" style="background-image: url('+smallImg+');">'+
                         '<div class="cover" large_img="'+largeImg+'">'+
                             '<div class="title">'+title+'</div>'+
                             '<div class="more-btn">MORE</div>'+
