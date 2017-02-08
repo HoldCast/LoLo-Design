@@ -18,7 +18,7 @@ body{
     text-align: center;
 }
 .lolo-main .case .case-content{
-    width:1300px;
+    width:1100px;
     margin: auto;
     text-align: center;
     overflow: hidden;
@@ -27,21 +27,23 @@ body{
     text-align: center;
     /*background: aqua;*/
     margin:25px;
-    height:400px;
-    width:600px;
+    height:300px;
+    width:500px;
     float: left;
 }
+
 .lolo-main .case .case-content .item img{
     max-width:calc(100% - 20px);
     margin:10px;
     height:calc(100% - 20px);
     cursor: pointer;
 }
-.lolo-main .case .case-content .item img:hover{
-    /*border: 2px solid #ccc;*/
+
+/*.lolo-main .case .case-content .item img:hover{
+    !*border: 2px solid #ccc;*!
 
     box-shadow: 0 0 10px 3px #bbbbbb;
-}
+}*/
 
 /**team等整个图片模块的样式**/
 .lolo-main .team{
