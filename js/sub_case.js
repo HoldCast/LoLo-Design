@@ -66,10 +66,11 @@ function moveImg() {
         if(isAnimate) return false;
         isAnimate = true;
         var $this = $(this);
+        var $width = parseInt($scrollImg.css('width'));
         var $scrollImgLeft = parseInt($scrollImg.css('left'));
-        var $scrollImgRight = parseInt($scrollImg.css('right'));
+        var $scrollImgRight = $width + $scrollImgLeft - 1200;
         if (!$this.hasClass('left')) {
-            if ($scrollImgRight < 0) {
+            if ($scrollImgRight > 0) {
                 $scrollImg.stop().animate({left: $scrollImgLeft - 300 + 'px'},function(){
                     isAnimate = false;
                 });
@@ -96,9 +97,10 @@ function startAutoScroll(){
     clearInterval(scrollTimer);
     scrollTimer = setInterval(function(){
         var $scrollImg = $('#scroll_img');
+        var $width = parseInt($scrollImg.css('width'));
         var $scrollImgLeft = parseInt($scrollImg.css('left'));
-        var $scrollImgRight = parseInt($scrollImg.css('right'));
-        if ($scrollImgRight < 0) {
+        var $scrollImgRight = $width + $scrollImgLeft - 1200;
+        if ($scrollImgRight > 0) {
             $scrollImg.stop().animate({left: $scrollImgLeft - 300 + 'px'});
         }else{
             $scrollImg.stop().animate({left: '0px'},300);

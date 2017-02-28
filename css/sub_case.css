@@ -45,20 +45,20 @@ i:hover{
 .sub-case-main .scroll-img{
     position: relative;
     text-align: center;
-    min-height:400px;
-    height: calc(100% - 210px);
-    margin:auto;
-    /*background-color: #ddd;*/
+    height:400px;
+    margin:50px auto;
 }
 .sub-case-main .scroll-img .scroll-img-content{
-    position: absolute;
+    position: relative;
     width:1200px;
     height:400px;
-    /*background: olivedrab;*/
     margin:auto;
-    top: calc(50% - 200px);
-    left: calc(50% - 600px);
+    /*background: olivedrab;*/
+
+    /*top: -webkit-calc(50% - 200px);*/
+    /*left: -webkit-calc(50% - 600px);*/
     overflow: hidden;
+
 }
 
 .sub-case-main .scroll-img .scroll-img-content .scroll-img-long{
@@ -66,22 +66,25 @@ i:hover{
     left:0;
     width:1200px;
     height: 100%;
+    /*background: aqua;*/
 }
 
 
 .sub-case-main .scroll-img .scroll-img-content .scroll-img-long .img-item{
     float: left;
-    width:300px;
-    height:400px;
+    width:270px;
+    height:360px;
     cursor: pointer;
+    margin:0 15px;
     background-color: #ccc;
     background-repeat:no-repeat;
-    background-size:300px 400px;
+    background-size:270px 360px;
+
 }
 
 .sub-case-main .scroll-img .scroll-img-content .scroll-img-long .img-item .cover{
-    width:100%;
-    height:calc(100% - 150px);
+    width: 270px;
+    height:210px;
     background-color: #000;
     color: #eeeeee;
     filter: alpha(opacity=80);
@@ -99,7 +102,7 @@ i:hover{
     border-radius: 10px;
     height:25px;
     line-height:25px;
-    margin:120px auto 0 auto;
+    margin:80px auto 0 auto;
     cursor: pointer;
     font-size:12px;
 }
@@ -113,8 +116,9 @@ i:hover{
 
 /*slogan*/
 .sub-case-main .slogan-img{
+    /*margin-top:30px;*/
     text-align: center;
-    height: 150px;
+    height: 140px;
 }
 .sub-case-main .slogan-img img{
     height: 140px;
