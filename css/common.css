@@ -49,6 +49,14 @@ abbr,acronym {
     background-color: #656565; /*中间显示的颜色*/
 }
 
+.btn{
+    font-size: 13px;
+    padding:2px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    border:1px #ccc solid;
+    outline: none;
+}
 /*::-webkit-scrollbar-button{}      !*滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*!*/
 /*::-webkit-scrollbar-track{}         !*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*!*/
 /*::-webkit-scrollbar-track-piece{width:2px;}        !*内层轨道，滚动条中间部分（除去）。*!*/

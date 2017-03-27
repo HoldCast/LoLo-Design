@@ -11,15 +11,51 @@ $(function () {
 function caseShow(){
     var $caseImg = $('#case_img');
     var caseImgArr = caseConfig;   //以后可能从后台获取信息
-    for(var i=0;i<caseImgArr.length;i++){
-        var caseImg = caseImgArr[i];
-        var imgSrc = '../images/' + caseImg.img;
-        var subId = caseImg.id;
-        var caseHtml =  '<div class="item">'+
-                        '<img src="'+imgSrc+'" alt="案例图片" sub_id="'+subId+'">'+
+    $.ajax({
+        xhrFields:{withCredentials:true},
+        crossDomain:true,
+        type:'post',
+        url: 'http://127.0.0.1:8080/home_info.php',
+        dataType:'json',
+        data: {type:2},
+        success:function(json){
+            console.log('success:',json);
+            var data = json['res'];
+            //$('#imgContent').empty()
+            for(var i=0;i<data.length;i++){
+                var caseImg = data[i];
+                var imgSrc = 'http://127.0.0.1:8080/' + caseImg.path;
+                var subId = caseImg.id;
+                var caseHtml =  '<div class="item">'+
+                    '<img src="'+imgSrc+'" alt="'+caseImg.mc+'" sub_id="'+subId+'">'+
                     '</div>';
-        $caseImg.append(caseHtml);
-    }
+                $caseImg.append(caseHtml);
+                /*var itemHTML = '<div class="item" data_id="'+item.id+'">' +
+                    '<div class="item-mc">'+item.mc+'</div>'+
+                    '<div class="item-path">'+item.path+'</div>'+
+                    '<div class="item-bz">'+item.bz+'</div>'+
+                    '<div class="item-cz">' +
+                    '<input type="button" class="btn edit" value="修改">' +
+                    '<input type="button" class="btn del" value="删除">' +
+                    '</div>'+
+                    '</div>';
+                $caseImg.append(itemHTML);*/
+            }
+        },
+        error:function(){
+            console.log('获取主页面数据后台出错!');
+            for(var i=0;i<caseImgArr.length;i++){
+                var caseImg = caseImgArr[i];
+                var imgSrc = '../images/' + caseImg.img;
+                var subId = caseImg.id;
+                var caseHtml =  '<div class="item">'+
+                    '<img src="'+imgSrc+'" alt="案例图片" sub_id="'+subId+'">'+
+                    '</div>';
+                $caseImg.append(caseHtml);
+            }
+        }
+    });
+
 
 
     //点击项目

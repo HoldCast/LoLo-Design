@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>刑专后台调试</title>
+    <title>子项信息</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
     <div class="admin-home">
-        <div class="title">刑专后台管理调试</div>
+        <div class="title" id="sub_title">无法获取子项名称</div>
         <div class="btn-area">
             <input class="btn" type="button" id="addBtn" style="margin-right:15px;" value="新增">
         </div>
@@ -24,14 +24,24 @@
         <div class="add-panel">
             <form id="img_form" method="post" enctype="multipart/form-data">
                 <div class="item">
-                    <span class="pro">项目名称</span>
-                    <input class="val" type="text" name="mc" id="mc">
+                    <span class="pro">子项标题</span>
+                    <input class="val" type="text" name="cover_title" id="cover_title">
                     <span>(必填*)</span>
                 </div>
                 <div class="item">
-                    <span class="pro">项目图片</span>
-                    <input class="val" type="file" name="file" id="file">
-                    <span>(建议最大宽高:600px * 500px)</span>
+                    <span class="pro">子项说明</span>
+                    <input class="val" type="text" name="cover_info" id="cover_info">
+                    <span>(必填*)</span>
+                </div>
+                <div class="item">
+                    <span class="pro">封面图片</span>
+                    <input class="val" type="file" name="cover_img" id="cover_img">
+                    <span>(宽高:300px * 400px)</span>
+                </div>
+                <div class="item">
+                    <span class="pro">内容图片</span>
+                    <input class="val" type="file" name="content_img" id="content_img">
+                    <span>(最大宽度:1200px)</span>
                 </div>
                 <div class="item bz">
                     <span class="pro">备注信息</span>
@@ -48,5 +58,5 @@
 <script src="../resource/jquery-2.1.0.min.js"></script>
 <script src="../resource/jquery-form.js"></script>
 <script src="../js/common.js"></script>
-<script src="../js/admin.js"></script>
+<script src="../js/admin_sub.js"></script>
 </html>

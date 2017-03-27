@@ -2,15 +2,16 @@
 .admin-home{
     width: 1200px;
     margin:auto;
-    height:800px;
-    background-color: #cccccc;
-
+    min-height:600px;
+    padding:30px 0;
+    background-color: #eeeeee;
 }
 .admin-home .title{
     font-size: 25px;
     text-align: center;
     height: 40px;
     line-height: 40px;
+    margin-bottom: 20px;
 }
 
 .admin-home .btn-area{
@@ -19,10 +20,51 @@
     line-height: 30px;
 }
 
+.admin-home .content .item{
+    margin: 5px 15px;
+    height: auto;
+    border-bottom: 1px #797979 solid;
+}
+
+.admin-home .content .item .btn{
+    font-size: 12px;
+    padding:0 2px;
+    margin:2px;
+}
+.admin-home .content .item-title{
+    font-size: 14px;
+    font-weight:bold;
+}
+
+.admin-home .content .item>div{
+    text-align: center;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.admin-home .content .item .item-mc{
+    width: 300px;
+    border-right: 1px #ccc dashed;
+}
+.admin-home .content .item .item-path{
+    width: 250px;
+}
+.admin-home .content .item .item-bz{
+    width: 420px;
+    border-left: 1px #ccc dashed;
+}
+.admin-home .content .item .item-cz{
+    width: 150px;
+    border-left: 1px #ccc dashed;
+}
 
 /*新增区域*/
 .add-cover{
-    /*display: none;*/
+    display: none;
     background:transparent;
     background-color: rgba(0,0,0,0.3);
     position: fixed;
@@ -36,19 +78,23 @@
 }
 
 .add-cover .add-panel{
-    margin: 50px auto;
+    margin: 100px auto;
     width:800px;
-    height:600px;
     background: #FFF;
+    padding: 30px 0;
 }
 
 .add-cover .add-panel .item{
     color: #555555;
-    margin:10px auto;
+    margin:0 0 10px 120px;
 }
 .add-cover .add-panel .item .val{
     display: inline-block;
-    width:400px;
+    width:380px;
+    height: 22px;
+    line-height:22px;
+    border:1px #ccc solid;
+    border-radius: 3px;
 }
 .add-cover .add-panel .item .pro{
 
@@ -58,9 +104,14 @@
 }
 .add-cover .add-panel .item.bz .val{
     resize: none;
-    width:400px;
-    height:200px;
+    width:380px;
+    height:120px;
+    border:1px #ccc solid;
+    border-radius: 3px;
 }
-.add-cover .add-panel
+.add-cover .add-panel .bottom-btn{
+    text-align: center;
+    margin-top: 25px;
+}
 .add-cover .add-panel
 
