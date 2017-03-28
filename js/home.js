@@ -15,31 +15,20 @@ function caseShow(){
         xhrFields:{withCredentials:true},
         crossDomain:true,
         type:'post',
-        url: 'http://127.0.0.1:8080/home_info.php',
+        url: '../php/home_info.php',
         dataType:'json',
         data: {type:2},
         success:function(json){
             console.log('success:',json);
             var data = json['res'];
-            //$('#imgContent').empty()
             for(var i=0;i<data.length;i++){
                 var caseImg = data[i];
-                var imgSrc = 'http://127.0.0.1:8080/' + caseImg.path;
+                var imgSrc = '../' + caseImg.path;
                 var subId = caseImg.id;
                 var caseHtml =  '<div class="item">'+
                     '<img src="'+imgSrc+'" alt="'+caseImg.mc+'" sub_id="'+subId+'">'+
                     '</div>';
                 $caseImg.append(caseHtml);
-                /*var itemHTML = '<div class="item" data_id="'+item.id+'">' +
-                    '<div class="item-mc">'+item.mc+'</div>'+
-                    '<div class="item-path">'+item.path+'</div>'+
-                    '<div class="item-bz">'+item.bz+'</div>'+
-                    '<div class="item-cz">' +
-                    '<input type="button" class="btn edit" value="修改">' +
-                    '<input type="button" class="btn del" value="删除">' +
-                    '</div>'+
-                    '</div>';
-                $caseImg.append(itemHTML);*/
             }
         },
         error:function(){
@@ -66,7 +55,7 @@ function caseShow(){
         if(subId){
             openSubCase(subId);
         }else{
-            alert('子项案例数据暂未设置,请点击第二项');
+            alert('无法获取主项ID,请联系开发人员');
         }
 
     });
@@ -142,11 +131,8 @@ function menu() {
 
 //打开子项目弹窗
 function openSubCase(subId){
-    if(subId != openedCaseId){
-        var random = Math.random();
-        $('#sub_iframe iframe').prop('src','sub_case.html?random='+random+'&subId='+subId);
-        openedCaseId = subId;
-    }
+    var random = Math.random();
+    $('#sub_iframe iframe').prop('src','sub_case.html?random='+random+'&subId='+subId);
     $('#sub_iframe').show('fast');
     $('body').css('overflow','hidden');
 }

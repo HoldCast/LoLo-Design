@@ -36,7 +36,7 @@ function submitImg(submit_id,form_id){
                 xhrFields:{withCredentials:true},
                 crossDomain:true,
                 type:'post',
-                url:'http://127.0.0.1:8080/home_info.php',
+                url:'../php/home_info.php',
                 dataType:'json',
                 data:{type:1},
                 success:function(json){
@@ -62,30 +62,36 @@ function getImg(){
         xhrFields:{withCredentials:true},
         crossDomain:true,
         type:'post',
-        url: 'http://127.0.0.1:8080/home_info.php',
+        url: '../php/home_info.php',
         dataType:'json',
         data: {type:2},
         success:function(json){
             console.log('success:',json);
             var data = json['res'];
             $('#imgContent').empty();
-            for(var i=0;i<data.length;i++){
-                var item = data[i];
-                var itemHTML = '<div class="item" data_id="'+item.id+'">' +
+            if(data.length){
+                for(var i=0;i<data.length;i++){
+                    var item = data[i];
+                    var itemHTML = '<div class="item" data_id="'+item.id+'">' +
                         '<div class="item-mc">'+item.mc+'</div>'+
                         '<div class="item-path">'+item.path+'</div>'+
                         '<div class="item-bz">'+item.bz+'</div>'+
                         '<div class="item-cz">' +
-                            '<input type="button" class="btn sub" value="子项信息">' +
-                            '<input type="button" class="btn edit" value="修改">' +
-                            '<input type="button" class="btn del" value="删除">' +
+                        '<input type="button" class="btn sub" value="子项信息">' +
+                        '<input type="button" class="btn edit" value="修改">' +
+                        '<input type="button" class="btn del" value="删除">' +
                         '</div>'+
-                    '</div>';
-                $('#imgContent').append(itemHTML);
+                        '</div>';
+                    $('#imgContent').append(itemHTML);
+                }
+            }else {
+                $('#imgContent').append('<h1 style="text-align:center;">无法获取任何主项信息,请新增..</h1>');
             }
+
         },
-        error:function(){
-            console.log('获取主页面数据后台出错!');
+        error:function(e){
+            alert('获取主页面数据后台出错!');
+            console.log(e);
 
         }
     });
@@ -101,3 +107,20 @@ function getImg(){
         }
     });
 }
+
+
+$('#证件类型组件ID').combobox({
+   onChange: function(n,o){
+       if(n){
+           if(n == '身份证代码'){
+               $('#证件号码组件ID').textbox({
+                   validType:'身份证验证规则'
+               });
+           }else {
+               $('#证件号码组件ID').textbox({
+                   validType:'' //其他验证规则或者为空不验证
+               });
+           }
+       }
+   }
+});

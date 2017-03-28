@@ -1,5 +1,6 @@
+var dataId = getPageParam('data_id');
+
 $(function(){
-    var dataId = getPageParam('data_id');
     getSubInfo(dataId);
     addImg(dataId);   //新增图片
 });
@@ -7,6 +8,9 @@ $(function(){
 function addImg(dataId){
     $('#addBtn').off('click').on('click',function(){
         $('#addCover').show();
+    });
+    $('#backBtn').off('click').on('click',function(){
+        history.go(-1);
     });
     $('#cancel').off('click').on('click',function(){
         $('#addCover').hide();
@@ -39,14 +43,14 @@ function submitImg(submit_id,form_id,dataId){
                 xhrFields:{withCredentials:true},
                 crossDomain:true,
                 type:'post',
-                url:'http://127.0.0.1:8080/sub_info.php',
+                url:'../php/sub_info.php',
                 dataType:'json',
                 data:{type:1,p_id:dataId},
                 success:function(json){
                     console.log('success:',json);
                     if(json.status == 'success'){
-                        //$('#addCover').hide();
-                        //getImg();
+                        $('#addCover').hide();
+                        getSubInfo(dataId);
                     }else if(json.status == 'error'){
                         alert(json.message);
                     }
@@ -59,65 +63,18 @@ function submitImg(submit_id,form_id,dataId){
     });
 }
 
-//获取图片信息
-function getImg(){
-    $.ajax({
-        xhrFields:{withCredentials:true},
-        crossDomain:true,
-        type:'post',
-        url: 'http://127.0.0.1:8080/home_info.php',
-        dataType:'json',
-        data: {type:2},
-        success:function(json){
-            console.log('success:',json);
-            var data = json['res'];
-            $('#imgContent').empty();
-            for(var i=0;i<data.length;i++){
-                var item = data[i];
-                var itemHTML = '<div class="item" data_id="'+item.id+'">' +
-                    '<div class="item-mc">'+item.mc+'</div>'+
-                    '<div class="item-path">'+item.path+'</div>'+
-                    '<div class="item-bz">'+item.bz+'</div>'+
-                    '<div class="item-cz">' +
-                    '<input type="button" class="btn sub" value="子项信息">' +
-                    '<input type="button" class="btn edit" value="修改">' +
-                    '<input type="button" class="btn del" value="删除">' +
-                    '</div>'+
-                    '</div>';
-                $('#imgContent').append(itemHTML);
-            }
-        },
-        error:function(){
-            console.log('获取主页面数据后台出错!');
-
-        }
-    });
-    $('#imgContent').off('click').on('click','.btn',function(){
-        var $this = $(this);
-        var thisID = $(this).parent().parent().attr('data_id');
-        if($this.hasClass('sub')){
-            location.href = 'admin_sub.html?data_id='+thisID;
-        }else if($this.hasClass('edit')){
-
-        }else if($this.hasClass('del')){
-
-        }
-    });
-}
-
-
-
-
+//获取信息
 function getSubInfo(dataId){
     //获取主项信息
     $.ajax({
         xhrFields:{withCredentials:true},
         crossDomain:true,
         type:'post',
-        url: 'http://127.0.0.1:8080/home_info.php',
+        url: '../php/home_info.php',
         dataType:'json',
         data: {type:5,id: dataId},
         success:function(json){
+            console.log('主项信息:',json);
             var data = json['res'][0];
             var mc = data.mc;
             $('#sub_title').text('【'+mc+'--系列】子项管理');
@@ -128,7 +85,7 @@ function getSubInfo(dataId){
         xhrFields:{withCredentials:true},
         crossDomain:true,
         type:'post',
-        url: 'http://127.0.0.1:8080/sub_info.php',
+        url: '../php/sub_info.php',
         dataType:'json',
         data: {
             type: 2,
@@ -136,25 +93,64 @@ function getSubInfo(dataId){
         },
         success:function(json){
             console.log('success:',json);
-            /*var data = json['res'];
-            $('#imgContent').empty();
-            for(var i=0;i<data.length;i++){
-                var item = data[i];
-                var itemHTML = '<div class="item" data_id="'+item.id+'">' +
-                    '<div class="item-mc">'+item.mc+'</div>'+
-                    '<div class="item-path">'+item.path+'</div>'+
-                    '<div class="item-bz">'+item.bz+'</div>'+
-                    '<div class="item-cz">' +
-                    '<input type="button" class="btn sub" value="子项信息">' +
-                    '<input type="button" class="btn edit" value="修改">' +
-                    '<input type="button" class="btn del" value="删除">' +
-                    '</div>'+
-                    '</div>';
-                $('#imgContent').append(itemHTML);
-            }*/
+            var data = json['res'];
+            var imgContent = $('#imgContent');
+            imgContent.empty();
+            if(data.length){
+                for(var i=0;i<data.length;i++){
+                    var item = data[i];
+                    var itemHTML = '<div class="item" cover_img="'+item.cover_img+'" content_img="'+item.content_img+'" data_id="'+item.id+'">' +
+                        '<div class="item-mc">'+item.cover_title+'</div>'+
+                        '<div class="item-path">'+item.cover_info+'</div>'+
+                        '<div class="item-bz">'+item.bz+'</div>'+
+                        '<div class="item-cz">' +
+                        '<input type="button" class="btn edit" value="修改">' +
+                        '<input type="button" class="btn del" value="删除">' +
+                        '</div>'+
+                        '</div>';
+                    imgContent.append(itemHTML);
+                }
+            }else{
+                imgContent.append('<h1 style="text-align:center;">无法获取任何子项信息,请新增..</h1>');
+            }
+
         },
         error:function(){
             console.log('获取子项信息数据后台出错!');
+
+        }
+    });
+    $('#imgContent').off('click').on('click','.btn',function(){
+        var $this = $(this);
+        var thisID = $(this).parent().parent().attr('data_id');
+        var cover_img = $(this).parent().parent().attr('cover_img');
+        var content_img = $(this).parent().parent().attr('content_img');
+        if($this.hasClass('edit')){
+
+        }
+
+        //删除
+        else if($this.hasClass('del')){
+            if(confirm("确定要删除吗？")){
+                $.ajax({
+                    xhrFields:{withCredentials:true},
+                    crossDomain:true,
+                    type:'post',
+                    url: '../php/sub_info.php',
+                    dataType:'json',
+                    data: {
+                        type: 3,
+                        id: thisID,
+                        cover_img: cover_img,
+                        content_img: content_img
+                    },
+                    success: function(json){
+                        if(json['res']){
+                            getSubInfo(dataId);
+                        }
+                    }
+                });
+            }
 
         }
     });

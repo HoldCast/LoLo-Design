@@ -6,22 +6,45 @@ include 'common.php';
 $post = $_POST;
 $type = $post['type'];
 if($type == 1){
-    $res = uploadImg($post);    //上传
-    echo json_encode($res);
+    $res = uploadImg($post);//上传
 }else if($type == 2){
-    getImgInfo($post);   //获取
+    $res = getImgInfo($post);//获取
 }else if($type == 3){
-
+    $res = deleteImgInfo($post);//删除
 }else if($type == 4){
     
 }
+echo json_encode($res);
+
+//删除
+function deleteImgInfo($post){
+    $id = $post['id'];
+    $cover_img = $post['cover_img'];
+    $content_img = $post['content_img'];
+    $message = '';
+    if(file_exists('../'.$cover_img)){
+        if(!unlink('../'.$cover_img)){
+            $message = $cover_img.'删除失败!';
+        }
+    }
+    if(file_exists('../'.$content_img)){
+        if(!unlink('../'.$content_img)){
+            $message = $content_img.'删除失败!';
+        }
+    }
+    $res['del_message'] = $message;
+    $sqlStr = "delete from sub_info where id=".$id;
+    $res['res'] = querySql('delete',$sqlStr);
+    return $res;
+}
+
 
 //获取
 function getImgInfo($post){
-    $sqlstr = "select * from sub_info order by id desc";
-    $res['res'] = querySql('query',$sqlstr);
-    $res = json_encode($res);
-    echo $res;
+    $p_id = $post['id'];
+    $sqlStr = "select * from sub_info where p_id='".$p_id."' order by id desc";
+    $res['res'] = querySql('query',$sqlStr);
+    return $res;
 }
 
 //上传图片
@@ -52,7 +75,7 @@ function uploadImg($post){
             }else{
                 $res['file'] = $file_k;
                 $name = iconv('utf-8','gb2312',$file_k["name"]); //利用Iconv函数对文件名进行重新编码
-                if (file_exists("upload/" . $name)){
+                if (file_exists("../upload/" . $name)){
                     $res['status'] = 'error';
                     $res['message'] = $file_k["name"] . "已经存在";
                     return $res;
@@ -69,7 +92,7 @@ function uploadImg($post){
         $file_k = $value;
         $fileName = $file_k['name'];
         $name = iconv('utf-8','gb2312',$file_k["name"]); //利用Iconv函数对文件名进行重新编码
-        move_uploaded_file($file_k["tmp_name"],"upload/" . $name);
+        move_uploaded_file($file_k["tmp_name"],"../upload/" . $name);
         $res[$key] = "upload/" .$file_k["name"];
     }
     $res['message'] = '上传成功!';
@@ -81,15 +104,15 @@ function uploadImg($post){
     $content_img = $res['content_img'];    
     $bz = $post['bz'];
 
-    $sqlstr = "insert into sub_info (p_id,cover_title,cover_info,cover_img,content_img,bz) values ('".$p_id."','".$cover_title."','".$cover_info."','".$cover_img."','".$content_img."','".$bz."')";
+    $sqlStr = "insert into sub_info (p_id,cover_title,cover_info,cover_img,content_img,bz) values ('".$p_id."','".$cover_title."','".$cover_info."','".$cover_img."','".$content_img."','".$bz."')";
 
-    $upStatus = querySql('insert',$sqlstr);
+    $upStatus = querySql('insert',$sqlStr);
     if($upStatus){
         $res['status'] = 'success';
     }else{
         $res['status'] = 'error';
         $res['message'] = "上传成功! 保存数据库失败!";
-        $res['sql'] = $sqlstr;
+        $res['sql'] = $sqlStr;
         $res['sql_err'] = $upStatus;
     }
     return $res;

@@ -1,5 +1,6 @@
 var scrollTimer = null;
 var isAnimate = false;
+var subId = getPageParam('subId');
 $(function () {
     autoHeight('main');
     returnBack();
@@ -9,31 +10,56 @@ $(function () {
 
 //获取图片信息
 function getSubCaseInfo(){
-    var subId = getPageParam('subId');
     var $scrollImg = $('#scroll_img');
-    var subCaseInfoArr = subCaseConfig[subId]; //以后从后台数据库获取[subId为查询条件]
-    var imgLen = subCaseInfoArr.length;
-    var imgWidth = imgLen*300;
-    $scrollImg.css('width',imgWidth); //设置图片的总宽度
-    for(var i=0;i<imgLen;i++){
-        var subCaseInfo = subCaseInfoArr[i];
-        var title = subCaseInfo.title;
-        var info = subCaseInfo.info;
-        var smallImg = '../images/' + subCaseInfo.smallImg;
-        var largeImg = '../images/' + subCaseInfo.largeImg;
-        var url = smallImg;
-        var html =  '<div class="img-item" small_img="'+smallImg+'" style="background-image: url('+smallImg+');">'+
+
+    //获取子项信息
+    $.ajax({
+        xhrFields:{withCredentials:true},
+        crossDomain:true,
+        type:'post',
+        url: '../php/sub_info.php',
+        dataType:'json',
+        data: {
+            type: 2,
+            id: subId
+        },
+        success:function(json){
+            console.log('success:',json);
+            var subCaseInfoArr = json['res'];
+            var imgLen = subCaseInfoArr.length;
+            if(imgLen){
+                var imgWidth = imgLen*300;
+                $scrollImg.css('width',imgWidth); //设置图片的总宽度
+                for(var i=0;i<imgLen;i++){
+                    var subCaseInfo = subCaseInfoArr[i];
+                    var title = subCaseInfo.cover_title;
+                    var info = subCaseInfo.cover_info;
+                    var smallImg = '../' + subCaseInfo.cover_img;
+                    var largeImg = '../' + subCaseInfo.content_img;
+                    var url = smallImg;
+                    var html =  '<div class="img-item" small_img="'+smallImg+'" style="background-image: url('+smallImg+');">'+
                         '<div class="cover" large_img="'+largeImg+'">'+
-                            '<div class="title">'+title+'</div>'+
-                            '<div class="more-btn">MORE</div>'+
-                            '<div class="slogan">'+info+'</div>'+
+                        '<div class="title">'+title+'</div>'+
+                        '<div class="more-btn">MORE</div>'+
+                        '<div class="slogan">'+info+'</div>'+
                         '</div>'+
-                    '</div>';
-        $scrollImg.append(html);
-    }
-    startAutoScroll();  //自动滚
-    moveImg();          //手动滚
-    hoverImg();         //hover效果
+                        '</div>';
+                    $scrollImg.append(html);
+                }
+                startAutoScroll();  //自动滚
+                moveImg();          //手动滚
+                hoverImg();         //hover效果
+            }else{
+                alert('无法获取任何子项信息,请到后台进行添加!!');
+                $('#return').click();
+            }
+
+        },
+        error:function(){
+            console.log('获取子项信息数据后台出错!');
+        }
+    });
+
 }
 
 function hoverImg(){
