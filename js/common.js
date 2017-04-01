@@ -15,3 +15,26 @@ function getPageParam(name) {
     if (r != null)return unescape(r[2]);
     return null;
 }
+
+//loading
+function loading(type,msg){
+    var msg = msg || '数据处理中,请稍候...';
+    var loading_img_url = '../images/loading.gif';
+    var loading_html='<div id="loadingMsk">'
+        +'<div class="loadingPage">'
+        +'<img src="'+loading_img_url+'" alt="loading">'
+        +'<span class="msg">'+msg+'</span>'
+        +'</div>'
+        +'</div>';
+    if($('#loadingMsk').length == 0){
+        $('body').append(loading_html);
+    }
+    if(type == 'open'){
+        $('#loadingMsk').fadeIn('fast');
+    }else if(type == 'close'){
+        $('#loadingMsk').fadeOut('fast').remove();
+    }else{
+        console.log('加载效果处理方式参数错误!');
+        return false;
+    }
+}

@@ -58,6 +58,7 @@ function submitImg(submit_id,form_id){
 
 //获取图片信息
 function getImg(){
+    loading('open');
     $.ajax({
         xhrFields:{withCredentials:true},
         crossDomain:true,
@@ -66,6 +67,7 @@ function getImg(){
         dataType:'json',
         data: {type:2},
         success:function(json){
+            loading('close');
             console.log('success:',json);
             var data = json['res'];
             $('#imgContent').empty();
@@ -103,24 +105,9 @@ function getImg(){
         }else if($this.hasClass('edit')){
 
         }else if($this.hasClass('del')){
+            $.ajax({
 
+            })
         }
     });
 }
-
-
-$('#证件类型组件ID').combobox({
-   onChange: function(n,o){
-       if(n){
-           if(n == '身份证代码'){
-               $('#证件号码组件ID').textbox({
-                   validType:'身份证验证规则'
-               });
-           }else {
-               $('#证件号码组件ID').textbox({
-                   validType:'' //其他验证规则或者为空不验证
-               });
-           }
-       }
-   }
-});
