@@ -1,7 +1,7 @@
 var dataId = getPageParam('data_id');
 
 $(function(){
-    getSubInfo(dataId);
+    getSubInfo(dataId,true);
     addImg(dataId);   //新增图片
 });
 
@@ -39,6 +39,7 @@ function submitImg(submit_id,form_id,dataId){
             //获取图片宽高
             //var image = new Image();
             //image.src = img_val;
+            loading('open');
             $("#"+form_id).ajaxSubmit({
                 xhrFields:{withCredentials:true},
                 crossDomain:true,
@@ -50,8 +51,9 @@ function submitImg(submit_id,form_id,dataId){
                     console.log('success:',json);
                     if(json.status == 'success'){
                         $('#addCover').hide();
-                        getSubInfo(dataId);
+                        getSubInfo(dataId,false);
                     }else if(json.status == 'error'){
+                        loading('close');
                         alert(json.message);
                     }
                 },
@@ -64,22 +66,24 @@ function submitImg(submit_id,form_id,dataId){
 }
 
 //获取信息
-function getSubInfo(dataId){
-    //获取主项信息
-    $.ajax({
-        xhrFields:{withCredentials:true},
-        crossDomain:true,
-        type:'post',
-        url: '../php/home_info.php',
-        dataType:'json',
-        data: {type:5,id: dataId},
-        success:function(json){
-            console.log('主项信息:',json);
-            var data = json['res'][0];
-            var mc = data.mc;
-            $('#sub_title').text('【'+mc+'--系列】子项管理');
-        }
-    });
+function getSubInfo(dataId,type){
+    if(type){
+        //获取主项信息
+        $.ajax({
+            xhrFields:{withCredentials:true},
+            crossDomain:true,
+            type:'post',
+            url: '../php/home_info.php',
+            dataType:'json',
+            data: {type:5,id: dataId},
+            success:function(json){
+                console.log('主项信息:',json);
+                var data = json['res'][0];
+                var mc = data.mc;
+                $('#sub_title').text('【'+mc+'--系列】子项管理');
+            }
+        });
+    }
     //获取子项信息
     $.ajax({
         xhrFields:{withCredentials:true},
@@ -92,6 +96,7 @@ function getSubInfo(dataId){
             id: dataId
         },
         success:function(json){
+            loading('close');
             console.log('success:',json);
             var data = json['res'];
             var imgContent = $('#imgContent');
@@ -132,6 +137,7 @@ function getSubInfo(dataId){
         //删除
         else if($this.hasClass('del')){
             if(confirm("确定要删除吗？")){
+                loading('open');
                 $.ajax({
                     xhrFields:{withCredentials:true},
                     crossDomain:true,
@@ -146,7 +152,7 @@ function getSubInfo(dataId){
                     },
                     success: function(json){
                         if(json['res']){
-                            getSubInfo(dataId);
+                            getSubInfo(dataId,false);
                         }
                     }
                 });

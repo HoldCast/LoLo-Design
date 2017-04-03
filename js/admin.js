@@ -9,9 +9,11 @@ $(function(){
 function addImg(){
     $('#addBtn').off('click').on('click',function(){
         $('#addCover').show();
+        $('#img_form')[0].reset();
     });
     $('#cancel').off('click').on('click',function(){
         $('#addCover').hide();
+
     });
     submitImg('save','img_form');   //绑定保存事件
 }
@@ -32,6 +34,7 @@ function submitImg(submit_id,form_id){
             //获取图片宽高
             //var image = new Image();
             //image.src = img_val;
+            loading('open');
             $("#"+form_id).ajaxSubmit({
                 xhrFields:{withCredentials:true},
                 crossDomain:true,
@@ -46,6 +49,7 @@ function submitImg(submit_id,form_id){
                         getImg();
                     }else if(json.status == 'error'){
                         alert(json.message);
+                        loading('close');
                     }
                 },
                 error:function(){
@@ -74,13 +78,13 @@ function getImg(){
             if(data.length){
                 for(var i=0;i<data.length;i++){
                     var item = data[i];
-                    var itemHTML = '<div class="item" data_id="'+item.id+'">' +
+                    var itemHTML = '<div class="item" img_path="'+item.path+'" data_id="'+item.id+'">' +
                         '<div class="item-mc">'+item.mc+'</div>'+
                         '<div class="item-path">'+item.path+'</div>'+
                         '<div class="item-bz">'+item.bz+'</div>'+
                         '<div class="item-cz">' +
                         '<input type="button" class="btn sub" value="子项信息">' +
-                        '<input type="button" class="btn edit" value="修改">' +
+                        //'<input type="button" class="btn edit" value="修改">' +
                         '<input type="button" class="btn del" value="删除">' +
                         '</div>'+
                         '</div>';
@@ -100,14 +104,55 @@ function getImg(){
     $('#imgContent').off('click').on('click','.btn',function(){
         var $this = $(this);
         var thisID = $(this).parent().parent().attr('data_id');
+        var thisPath = $(this).parent().parent().attr('img_path');
         if($this.hasClass('sub')){
             location.href = 'admin_sub.html?data_id='+thisID;
         }else if($this.hasClass('edit')){
 
         }else if($this.hasClass('del')){
+            loading('open');
             $.ajax({
+                xhrFields:{withCredentials:true},
+                crossDomain:true,
+                type:'post',
+                url: '../php/sub_info.php',
+                dataType:'json',
+                data: {
+                    type: 2,
+                    id: thisID
+                },
+                success:function(json){
+                    loading('close');
+                    var data = json['res'];
+                    if(data.length){
+                        alert('该项目下存在子项信息,请先删除所有子项信息!');
+                    }else{
+                        if(confirm("确定要删除吗？")){
+                            loading('open');
+                            $.ajax({
+                                xhrFields:{withCredentials:true},
+                                crossDomain:true,
+                                type:'post',
+                                url: '../php/home_info.php',
+                                dataType:'json',
+                                data: {
+                                    type:3,//删除
+                                    id: thisID,
+                                    path: thisPath
+                                },
+                                success: function(json){
+                                    if(json.res){
+                                        getImg();
+                                    }
+                                    //loading('close');
+                                    console.log(json);
+                                }
+                            });
+                        }
+                    }
+                }
+            });
 
-            })
         }
     });
 }

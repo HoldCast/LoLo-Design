@@ -5,37 +5,63 @@ include 'common.php';
 $post = $_POST;
 $type = $post['type'];
 if($type == 1){
-    uploadImg($post);    //上传
+    $res = uploadImg($post);//上传
 }else if($type == 2){
-    getImgInfo();   //获取
-
+    $res = getImgInfo();    //获取
 }else if($type == 3){
-
+    $res = deleteImgInfo($post);
 }else if($type == 4){
     
 }else if($type == 5){
     $id = $post['id'];
-    getImgInfoByID($id);
+    $res = getImgInfoByID($id);
 }
 
+echo json_encode($res);
 
 
+//删除
+function deleteImgInfo($post){
+    $id = $post['id'];
+    $img = $post['path'];
+    $message = '';
+    if(file_exists('../'.$img)){
+        if(!unlink('../'.$img)){
+            $message = $img.'删除失败!';
+        }
+    }
 
+    /*$cover_img = $post['cover_img'];
+    $content_img = $post['content_img'];
+    $message = '';
+    if(file_exists('../'.$cover_img)){
+        if(!unlink('../'.$cover_img)){
+            $message = $cover_img.'删除失败!';
+        }
+    }
+    if(file_exists('../'.$content_img)){
+        if(!unlink('../'.$content_img)){
+            $message = $content_img.'删除失败!';
+        }
+    }*/
+    $res['del_message'] = $message;
+    $sqlStr = "delete from home_info where id=".$id;
+    $res['res'] = querySql('delete',$sqlStr);
+    return $res;
+}
 
 //获取
 function getImgInfo(){
-    $sqlStr = "select * from home_info order by id desc";
+    $sqlStr = "select * from home_info order by id asc";
     $res['res'] = querySql('query',$sqlStr);
-    $res = json_encode($res);
-    echo $res;
+    return $res;
 }
 
 //获取by ID
 function getImgInfoByID($id){
     $sqlStr = "select * from home_info where id='".$id."'";
     $res['res'] = querySql('query',$sqlStr);
-    $res = json_encode($res);
-    echo $res;
+    return $res;
 }
 
 
@@ -90,8 +116,7 @@ function uploadImg($post){
         $res['status'] = 'error';
         $res['message'] = '文件类型错误';
     }
-
-    echo json_encode($res);
+    return $res;
 }
 
 
