@@ -7,13 +7,18 @@ $(function(){
 });
 
 function addImg(){
+    $('#openHome').off('click').on('click',function(){
+        open('home.html');
+    });
     $('#addBtn').off('click').on('click',function(){
         $('#addCover').show();
         $('#img_form')[0].reset();
     });
     $('#cancel').off('click').on('click',function(){
         $('#addCover').hide();
-
+    });
+    $('#closeBtn').off('click').on('click',function(){
+        close();
     });
     submitImg('save','img_form');   //绑定保存事件
 }
@@ -53,6 +58,7 @@ function submitImg(submit_id,form_id){
                     }
                 },
                 error:function(){
+                    loading('close');
                     alert('主页面保存数据后台出错!');
                 }
             });
@@ -96,8 +102,8 @@ function getImg(){
 
         },
         error:function(e){
+            loading('close');
             alert('获取主页面数据后台出错!');
-            console.log(e);
 
         }
     });

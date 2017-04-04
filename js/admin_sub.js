@@ -109,7 +109,7 @@ function getSubInfo(dataId,type){
                         '<div class="item-path">'+item.cover_info+'</div>'+
                         '<div class="item-bz">'+item.bz+'</div>'+
                         '<div class="item-cz">' +
-                        '<input type="button" class="btn edit" value="修改">' +
+                        //'<input type="button" class="btn edit" value="修改">' +
                         '<input type="button" class="btn del" value="删除">' +
                         '</div>'+
                         '</div>';

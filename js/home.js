@@ -127,6 +127,10 @@ function menu() {
     $('#menu_cover a').off('click').on('click', function () {
         $('#menu_close_btn').click();
     });
+
+    $('#adminBtn').dblclick(function () {
+        open('admin.html');
+    });
 }
 
 //打开子项目弹窗

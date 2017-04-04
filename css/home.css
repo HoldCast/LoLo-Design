@@ -86,7 +86,7 @@ body{
     height: 80px;
     line-height: 80px;
     clear: both;
-    margin: 0 25px;
+    margin: 0 30px;
 }
 .menu-cover .menu-title .logo{
     float: left;
@@ -112,7 +112,7 @@ body{
 .menu-cover .menu-content .menu-item{
     position: relative;
     cursor: pointer;
-    margin:45px 0;
+    margin:70px 0;
 }
 .menu-cover .menu-content .menu-item a:hover{color:#fff;}
 .menu-cover .menu-content .menu-item a{
