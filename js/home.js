@@ -5,6 +5,7 @@ $(function () {
     showCoverImg(true); //展示封面
     menu();             //菜单处理
     caseShow();         //案列展示
+    scrollControl();
 
 });
 
@@ -146,6 +147,24 @@ function closeSubCase(){
     $('body').css('overflow','auto');
 }
 
+function scrollControl(){
+    var isGo = false;
+    $(window).on('scroll', function () {
+        var  id = 'brand';
+        var teamTop = $('#' + id)[0].offsetTop;
+        var scrollTop = $(window).scrollTop();
+        var wHeight = $(window).height();
+        console.log(scrollTop+wHeight,teamTop);
+        if((scrollTop+wHeight) > teamTop && !isGo){
+            $('html,body').animate({scrollTop: teamTop + 'px'}, 800);
+            isGo = true;
+        }
+        if((scrollTop+wHeight) < teamTop){
+            isGo = false;
+        }
+    });
+}
+
 function scrollArea(id) {
     //滚轮事件
     var initTop = 0;
@@ -205,5 +224,7 @@ function scrollArea(id) {
         initTop = scrollTop;
     });
 }
+
+
 
 

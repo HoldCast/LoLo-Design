@@ -50,8 +50,11 @@ function getSubCaseInfo(){
                 moveImg();          //手动滚
                 hoverImg();         //hover效果
             }else{
-                alert('无法获取任何子项信息,请到后台进行添加!!');
-                $('#return').click();
+                setTimeout(function(){
+                    alert('无法获取任何子项信息,请到后台进行添加!!');
+                    $('#return').click();
+                },500);
+
             }
 
         },
