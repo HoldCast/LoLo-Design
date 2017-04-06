@@ -21,7 +21,7 @@ function querySql($type,$sqlStr){
             $result[] = $thread;
         }
         return $result;
-    }else if($type == 'insert' || $type == 'delete'){
+    }else if($type == 'insert' || $type == 'delete' || $type == 'update'){
         return $query;
     }
     

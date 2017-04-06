@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoLo--主项信息管理</title>
+    <title>系统管理--主项信息管理</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
     <div class="admin-home">
-        <div class="title">LoLo--主项信息管理</div>
+        <div class="title">系统管理--主项信息管理</div>
         <div class="btn-area">
+            <span id="tips" class="tips"></span>
             <input class="btn" type="button" id="openHome"  value="打开网站首页">
             <input class="btn" type="button" id="addBtn"  value="新增主项">
+            <input class="btn" type="button" id="sortBtn"  value="启用排序">
             <input class="btn" type="button" id="closeBtn" style="margin-right:15px;" value="关闭">
         </div>
         <div class="content">
             <div class="item item-title">
-                <div class="item-mc">主项系列名称</div><div class="item-path">封面路径信息</div><div class="item-bz">备注信息</div><div class="item-cz">操作</div>
+                <div class="item-num">#</div><div class="item-mc">主项系列名称</div><div class="item-path">封面路径信息</div><div class="item-bz">备注信息</div><div class="item-cz">操作</div>
             </div>
         </div>
         <div class="content" id="imgContent"></div>

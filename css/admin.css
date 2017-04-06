@@ -20,6 +20,15 @@
     line-height: 30px;
 }
 
+.admin-home .btn-area .tips{
+    display: inline-block;
+    width: 600px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #D41616;
+}
+
 .admin-home .content .item{
     margin: 5px 15px;
     height: auto;
@@ -36,6 +45,12 @@
     font-weight:bold;
 }
 
+.admin-home .content .move{
+    font-weight: bold;
+    color: #540000;
+    background-color: #CACACA;
+}
+
 .admin-home .content .item>div{
     text-align: center;
     display: inline-block;
@@ -46,8 +61,12 @@
     text-overflow:ellipsis;
 }
 
+.admin-home .content .item .item-num{
+    width: 40px;
+    border-right: 1px #ccc dashed;
+}
 .admin-home .content .item .item-mc{
-    width: 300px;
+    width: 260px;
     border-right: 1px #ccc dashed;
 }
 .admin-home .content .item .item-path{

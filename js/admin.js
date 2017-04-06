@@ -7,6 +7,7 @@ $(function(){
 });
 
 function addImg(){
+    var isSort = false;
     $('#openHome').off('click').on('click',function(){
         open('home.html');
     });
@@ -19,6 +20,56 @@ function addImg(){
     });
     $('#closeBtn').off('click').on('click',function(){
         close();
+    });
+    $('#sortBtn').off('click').on('click',function(){
+        var $this = $(this);
+        //点击【保存排序】
+        if(isSort){
+            var sortObj = {};
+            $this.val('启用排序');
+            $('.up,.down').hide();
+            $('.sub,.del').show();
+            $('#tips').text('');
+            $('#imgContent').find('.item-data').each(function(index){
+                var $this = $(this);
+                var id = $this.attr('data_id');
+                var mc = $this.attr('mc');
+                var num = index + 1;
+                $this.find('.item-num').text(num);
+                sortObj[id] = num;
+                console.log(id,mc,num);
+            });
+            //console.log(sortObj);
+            loading('open');
+            $.ajax({
+                xhrFields:{withCredentials:true},
+                crossDomain:true,
+                type:'post',
+                url: '../php/home_info.php',
+                dataType:'json',
+                data: {
+                    type:4,
+                    sort:sortObj
+                },
+                success:function(json){
+                    loading('close');
+                    console.log(json);
+                },
+                error: function(){
+                    loading('close');
+                    alert('排序更新后台出错!');
+                }
+            });
+
+        }
+        //点击【启用排序】
+        else{
+            $this.val('保存排序');
+            $('.up,.down').show();
+            $('.sub,.del').hide();
+            $('#tips').text('【提示信息】 排序完成后请点击 保存排序 !!!');
+        }
+        isSort = !isSort;
     });
     submitImg('save','img_form');   //绑定保存事件
 }
@@ -84,7 +135,8 @@ function getImg(){
             if(data.length){
                 for(var i=0;i<data.length;i++){
                     var item = data[i];
-                    var itemHTML = '<div class="item" img_path="'+item.path+'" data_id="'+item.id+'">' +
+                    var itemHTML = '<div class="item item-data" mc="'+item.mc+'" img_path="'+item.path+'" data_id="'+item.id+'">' +
+                        '<div class="item-num">'+(i+1)+'</div>'+
                         '<div class="item-mc">'+item.mc+'</div>'+
                         '<div class="item-path">'+item.path+'</div>'+
                         '<div class="item-bz">'+item.bz+'</div>'+
@@ -92,6 +144,8 @@ function getImg(){
                         '<input type="button" class="btn sub" value="子项信息">' +
                         //'<input type="button" class="btn edit" value="修改">' +
                         '<input type="button" class="btn del" value="删除">' +
+                        '<input type="button" style="display:none" class="btn up" value="上移">' +
+                        '<input type="button" style="display:none" class="btn down" value="下移">' +
                         '</div>'+
                         '</div>';
                     $('#imgContent').append(itemHTML);
@@ -111,10 +165,18 @@ function getImg(){
         var $this = $(this);
         var thisID = $(this).parent().parent().attr('data_id');
         var thisPath = $(this).parent().parent().attr('img_path');
-        if($this.hasClass('sub')){
+        var thisRow = $this.parent().parent();
+        var prevRow = thisRow.prev();
+        var nextRow = thisRow.next();
+        thisRow.siblings().removeClass('move');
+        if($this.hasClass('up')){
+            thisRow.addClass('move');
+                prevRow.before(thisRow);
+        }else if($this.hasClass('down')){
+            thisRow.addClass('move');
+                nextRow.after(thisRow);
+        }else if($this.hasClass('sub')){
             location.href = 'admin_sub.html?data_id='+thisID;
-        }else if($this.hasClass('edit')){
-
         }else if($this.hasClass('del')){
             loading('open');
             $.ajax({
@@ -158,7 +220,6 @@ function getImg(){
                     }
                 }
             });
-
         }
     });
 }

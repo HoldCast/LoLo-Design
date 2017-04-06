@@ -11,13 +11,28 @@ if($type == 1){
 }else if($type == 3){
     $res = deleteImgInfo($post);
 }else if($type == 4){
-    
+    $res = updateImgInfo($post);
 }else if($type == 5){
     $id = $post['id'];
     $res = getImgInfoByID($id);
 }
 
 echo json_encode($res);
+
+//update
+function updateImgInfo($post){
+    $res['post'] = $post;
+    $sort = $post['sort'];
+    $ids = implode(',', array_keys($sort));
+    $sqlStr = "UPDATE home_info SET img_sort = CASE id ";
+    foreach ($sort as $id => $ordinal) {
+        $sqlStr .= sprintf("WHEN %d THEN %d ", $id, $ordinal);
+    }
+    $sqlStr .= "END WHERE id IN ($ids)";
+    $res['res'] = querySql('update',$sqlStr);
+    $res['sql'] = $sqlStr;
+    return $res;
+}
 
 
 //删除
@@ -52,7 +67,7 @@ function deleteImgInfo($post){
 
 //获取
 function getImgInfo(){
-    $sqlStr = "select * from home_info order by id asc";
+    $sqlStr = "select * from home_info order by img_sort asc";
     $res['res'] = querySql('query',$sqlStr);
     return $res;
 }
