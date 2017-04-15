@@ -26,7 +26,7 @@ function addImg(){
         //点击【保存排序】
         if(isSort){
             var sortObj = {};
-            $this.val('启用排序');
+            $this.val('案例封面排序');
             $('.up,.down').hide();
             $('.sub,.del').show();
             $('#tips').text('');
@@ -64,10 +64,10 @@ function addImg(){
         }
         //点击【启用排序】
         else{
-            $this.val('保存排序');
+            $this.val('保存案例排序');
             $('.up,.down').show();
             $('.sub,.del').hide();
-            $('#tips').text('【提示信息】 排序完成后请点击 保存排序 !!!');
+            $('#tips').text('请点击 保存案例排序 !!!');
         }
         isSort = !isSort;
     });
@@ -141,7 +141,7 @@ function getImg(){
                         '<div class="item-path">'+item.path+'</div>'+
                         '<div class="item-bz">'+item.bz+'</div>'+
                         '<div class="item-cz">' +
-                        '<input type="button" class="btn sub" value="子项信息">' +
+                        '<input type="button" class="btn sub" value="进入案例">' +
                         //'<input type="button" class="btn edit" value="修改">' +
                         '<input type="button" class="btn del" value="删除">' +
                         '<input type="button" style="display:none" class="btn up" value="上移">' +

@@ -6,15 +6,17 @@ body{
 }
 .lolo-main{
     background-color: #fff;
-    margin:50px 30px 20px 30px;
+    margin:0 auto 20px auto;
     clear:both;
 }
 /*caseImg*/
 
 .lolo-main .case{
+    background-color: #f7f7f7;
     margin-bottom: 40px;
 }
 .lolo-main .case .case-title{
+    padding-top:30px;
     text-align: center;
 }
 .lolo-main .case .case-content{

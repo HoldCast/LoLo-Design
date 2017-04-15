@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LoLo-子项管理</title>
+    <title>案例内容管理</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
@@ -10,12 +10,12 @@
     <div class="admin-home">
         <div class="title" id="sub_title"></div>
         <div class="btn-area">
-            <input class="btn" type="button" id="backBtn" value="返回主项信息">
-            <input class="btn" type="button" id="addBtn" style="margin-right:15px;" value="新增子项">
+            <input class="btn" type="button" id="backBtn" value="返回案例封面管理">
+            <input class="btn" type="button" id="addBtn" style="margin-right:15px;" value="新增案例子项">
         </div>
         <div class="content">
             <div class="item item-title">
-                <div class="item-mc">子项标题</div><div class="item-path">子项说明</div><div class="item-bz">备注信息</div><div class="item-cz">操作</div>
+                <div class="item-mc">案例子项标题</div><div class="item-path">案例子项说明</div><div class="item-bz">备注信息</div><div class="item-cz">操作</div>
             </div>
         </div>
         <div class="content" id="imgContent"></div>
@@ -25,31 +25,31 @@
         <div class="add-panel">
             <form id="img_form" method="post" enctype="multipart/form-data">
                 <div class="item">
-                    <span class="pro">封面图片</span>
+                    <span class="pro">案例子项封面</span>
                     <input class="val" type="file" name="cover_img" id="cover_img">
                     <span>(宽高:300px * 400px)</span>
                 </div>
                 <div class="item">
-                    <span class="pro">内容图片</span>
+                    <span class="pro">案例子项图片</span>
                     <input class="val" type="file" name="content_img" id="content_img">
                     <span>(最大宽度:1200px)</span>
                 </div>
                 <div class="item">
-                    <span class="pro">子项标题</span>
+                    <span class="pro">案例子项标题</span>
                     <input class="val" type="text" name="cover_title" id="cover_title">
                     <span>(必填*)</span>
                 </div>
                 <div class="item">
-                    <span class="pro">子项说明</span>
+                    <span class="pro">案例子项信息</span>
                     <input class="val" type="text" name="cover_info" id="cover_info">
                     <span>(必填*)</span>
                 </div>
                 <div class="item bz">
-                    <span class="pro">备注信息</span>
+                    <span class="pro">案例子项备注</span>
                     <textarea class="val" name="bz" id="bz"></textarea>
                 </div>
                 <div class="bottom-btn">
-                    <input class="btn" type="button" id="save" value="保存">
+                    <input class="btn" type="button" id="save" value="上传">
                     <input class="btn" type="button" id="cancel" value="取消">
                 </div>
             </form>

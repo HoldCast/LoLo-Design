@@ -36,8 +36,8 @@
 }
 
 .admin-home .content .item .btn{
-    font-size: 12px;
-    padding:0 2px;
+    font-size: 13px;
+    padding:2px 4px;
     margin:2px;
 }
 .admin-home .content .item-title{
@@ -98,7 +98,7 @@
 
 .add-cover .add-panel{
     margin: 100px auto;
-    width:800px;
+    width:950px;
     background: #FFF;
     padding: 30px 0;
 }

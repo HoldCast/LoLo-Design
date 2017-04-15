@@ -1,7 +1,6 @@
 
 var openedCaseId = null;
 $(function () {
-    document.getElementById("music").volume = 0.6;//设置音量大小
     showCoverImg(true); //展示封面
     menu();             //菜单处理
     caseShow();         //案列展示

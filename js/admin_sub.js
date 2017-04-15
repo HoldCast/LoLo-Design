@@ -8,6 +8,7 @@ $(function(){
 function addImg(dataId){
     $('#addBtn').off('click').on('click',function(){
         $('#addCover').show();
+        $('#img_form')[0].reset();
     });
     $('#backBtn').off('click').on('click',function(){
         history.go(-1);
@@ -77,14 +78,15 @@ function getSubInfo(dataId,type){
             dataType:'json',
             data: {type:5,id: dataId},
             success:function(json){
-                console.log('主项信息:',json);
+                //console.log('主项信息:',json);
                 var data = json['res'][0];
                 var mc = data.mc;
-                $('#sub_title').text('【'+mc+'--系列】子项管理');
+                $('#sub_title').text('【'+mc+'】子项信息管理');
             }
         });
     }
     //获取子项信息
+    loading('open');
     $.ajax({
         xhrFields:{withCredentials:true},
         crossDomain:true,

@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>系统管理--主项信息管理</title>
+    <title>案例封面信息管理</title>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
     <div class="admin-home">
-        <div class="title">系统管理--主项信息管理</div>
+        <div class="title">案例封面信息管理</div>
         <div class="btn-area">
             <span id="tips" class="tips"></span>
             <input class="btn" type="button" id="openHome"  value="打开网站首页">
-            <input class="btn" type="button" id="addBtn"  value="新增主项">
-            <input class="btn" type="button" id="sortBtn"  value="启用排序">
+            <input class="btn" type="button" id="addBtn"  value="新增案例封面">
+            <input class="btn" type="button" id="sortBtn"  value="案例封面排序">
             <input class="btn" type="button" id="closeBtn" style="margin-right:15px;" value="关闭">
         </div>
         <div class="content">
             <div class="item item-title">
-                <div class="item-num">#</div><div class="item-mc">主项系列名称</div><div class="item-path">封面路径信息</div><div class="item-bz">备注信息</div><div class="item-cz">操作</div>
+                <div class="item-num">#</div><div class="item-mc">案例封面名称</div><div class="item-path">封面路径信息</div><div class="item-bz">备注信息</div><div class="item-cz">操作</div>
             </div>
         </div>
         <div class="content" id="imgContent"></div>
@@ -28,21 +28,21 @@
         <div class="add-panel">
             <form id="img_form" method="post" enctype="multipart/form-data">
                 <div class="item">
-                    <span class="pro">主项图片</span>
+                    <span class="pro">案列封面图片</span>
                     <input class="val" type="file" name="file" id="file">
                     <span>(建议最大宽高:600px * 500px)</span>
                 </div>
                 <div class="item">
-                    <span class="pro">主项名称</span>
+                    <span class="pro">案例封面名称</span>
                     <input class="val" type="text" name="mc" id="mc">
                     <span>(必填*)</span>
                 </div>
                 <div class="item bz">
-                    <span class="pro">备注信息</span>
+                    <span class="pro">案例备注信息</span>
                     <textarea class="val" name="bz" id="bz"></textarea>
                 </div>
                 <div class="bottom-btn">
-                    <input class="btn" type="button" id="save" value="保存">
+                    <input class="btn" type="button" id="save" value="上传">
                     <input class="btn" type="button" id="cancel" value="取消">
                 </div>
             </form>
