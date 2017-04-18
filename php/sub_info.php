@@ -42,7 +42,7 @@ function deleteImgInfo($post){
 //获取
 function getImgInfo($post){
     $p_id = $post['id'];
-    $sqlStr = "select * from sub_info where p_id='".$p_id."' order by id desc";
+    $sqlStr = "select * from sub_info where p_id='".$p_id."' order by id asc";
     $res['res'] = querySql('query',$sqlStr);
     return $res;
 }
