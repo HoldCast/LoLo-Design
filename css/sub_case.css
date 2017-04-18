@@ -72,14 +72,14 @@ i:hover{
 
 .sub-case-main .scroll-img .scroll-img-content .scroll-img-long .img-item{
     float: left;
-    width:270px;
-    height:360px;
+    width:266px;
+    height:356px;
     cursor: pointer;
     margin:0 15px;
     background-color: #ccc;
     background-repeat:no-repeat;
     background-size:270px 360px;
-
+    border: 2px solid #eee;
 }
 
 .sub-case-main .scroll-img .scroll-img-content .scroll-img-long .img-item .cover{
