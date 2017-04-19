@@ -8,6 +8,7 @@
     right: 20px;
     height:60px;
     line-height:60px;
+    z-index:3;
 }
 
 .main .return i{
@@ -28,9 +29,12 @@ i:hover{
 }
 
 .sub-case-main .scroll-btn{
+    z-index:2;
+    position: absolute;
+    top:0;
+    width:100%;
     height: 60px;
     line-height:60px;
-    /*background-color: aqua;*/
     text-align: center;
     color: #555;
 }
@@ -46,7 +50,7 @@ i:hover{
     position: relative;
     text-align: center;
     height:400px;
-    margin:125px auto 75px auto
+    margin:160px auto 75px auto
 }
 .sub-case-main .scroll-img .scroll-img-content{
     position: relative;
@@ -116,9 +120,11 @@ i:hover{
 
 /*slogan*/
 .sub-case-main .slogan-img{
-    /*margin-top:30px;*/
+    z-index:2;
+    position: absolute;
     text-align: center;
-    height: 140px;
+    bottom: 0;
+    width: 100%;
 }
 .sub-case-main .slogan-img img{
     height: 140px;

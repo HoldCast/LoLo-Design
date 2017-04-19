@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*本页面单独控制*/
 body{
-    max-width: 1600px;
+    max-width: 100%;
     min-width: 1266px;
 }
 .lolo-main{
