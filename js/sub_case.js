@@ -10,8 +10,8 @@ $(function () {
 
 //获取图片信息
 function getSubCaseInfo(){
+    $('#sloganImg').prop('src','../images/'+subId+'.jpg');
     var $scrollImg = $('#scroll_img');
-
     //获取子项信息
     $.ajax({
         xhrFields:{withCredentials:true},
