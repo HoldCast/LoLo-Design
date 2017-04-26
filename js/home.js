@@ -10,7 +10,6 @@ $(function () {
 
 function caseShow(){
     var $caseImg = $('#case_img');
-    var caseImgArr = caseConfig;   //以后可能从后台获取信息
     $.ajax({
         xhrFields:{withCredentials:true},
         crossDomain:true,
@@ -33,15 +32,6 @@ function caseShow(){
         },
         error:function(){
             console.log('获取主页面数据后台出错!');
-            for(var i=0;i<caseImgArr.length;i++){
-                var caseImg = caseImgArr[i];
-                var imgSrc = '../images/' + caseImg.img;
-                var subId = caseImg.id;
-                var caseHtml =  '<div class="item">'+
-                    '<img src="'+imgSrc+'" alt="案例图片" sub_id="'+subId+'">'+
-                    '</div>';
-                $caseImg.append(caseHtml);
-            }
         }
     });
 
